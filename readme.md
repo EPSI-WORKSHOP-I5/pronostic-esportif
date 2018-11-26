@@ -1,21 +1,8 @@
-# Ultrasecure-Manager
+# Pronostic esportifs
 
 [![Build Status](https://travis-ci.com/LevFlavien/ultrasecure-manager.svg?token=pMosntgsxwfqWQrEtQCp&branch=master)](https://travis-ci.com/LevFlavien/ultrasecure-manager)
 
 ## Installation
-
-### Run Nanobox instance
-
-Go to the base dir, same as `boxfile.yml`, and run:
-```
-nanobox run
-```
-
-Then run all the following commands into the nanobox instance.
-```
-cd public_html
-```
-
 
 ### PHP Packages
 
