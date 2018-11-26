@@ -1,7 +1,5 @@
 # Pronostic esportifs
 
-[![Build Status](https://travis-ci.com/LevFlavien/ultrasecure-manager.svg?token=pMosntgsxwfqWQrEtQCp&branch=master)](https://travis-ci.com/LevFlavien/ultrasecure-manager)
-
 ## Installation
 
 ### PHP Packages
