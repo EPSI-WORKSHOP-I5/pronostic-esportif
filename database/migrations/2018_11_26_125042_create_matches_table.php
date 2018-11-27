@@ -18,6 +18,8 @@ class CreateMatchesTable extends Migration
             $table->unsignedInteger('team1_id');
             $table->unsignedInteger('team2_id');
             $table->unsignedInteger('winner_id')->nullable();
+            $table->string('score')->nullable();
+            $table->unsignedInteger('tournament_id')->nullable();
             $table->timestamps();
         });
 
@@ -25,6 +27,7 @@ class CreateMatchesTable extends Migration
             $table->foreign('team1_id')->references('id')->on('teams')->onDelete('cascade');
             $table->foreign('team2_id')->references('id')->on('teams')->onDelete('cascade');
             $table->foreign('winner_id')->references('id')->on('teams')->onDelete('cascade');
+            $table->foreign('tournament_id')->references('id')->on('tournaments');
         });
     }
 
