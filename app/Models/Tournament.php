@@ -18,6 +18,6 @@ class Tournament extends Model
     }
 
     public function matches() {
-        // TODO
+        return $this->hasMany('App\Models\Match');
     }
 }

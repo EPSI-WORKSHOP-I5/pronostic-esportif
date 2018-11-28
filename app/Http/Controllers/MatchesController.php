@@ -18,7 +18,10 @@ class MatchesController extends Controller
     }
 
     public function getByTournament(Tournament $tournament) {
-        return $tournament->matches;
+        $matches = Match::with('team1', 'team2')
+            ->where('tournament_id', $tournament->id)
+            ->get();
+        return $matches;
     }
 
     public function create(MatchRequest $request, Tournament $tournament) {

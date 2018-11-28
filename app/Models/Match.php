@@ -13,4 +13,12 @@ class Match extends Model
         'tournament_id',
         'score'
     ];
+
+    public function team1() {
+        return $this->hasOne('App\Models\Team', 'id', 'team1_id');
+    }
+
+    public function team2() {
+        return $this->hasOne('App\Models\Team', 'id', 'team2_id');
+    }
 }
