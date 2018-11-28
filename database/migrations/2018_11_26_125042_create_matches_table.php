@@ -17,16 +17,15 @@ class CreateMatchesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('team1_id');
             $table->unsignedInteger('team2_id');
-            $table->unsignedInteger('winner_id')->nullable();
-            $table->string('score')->nullable();
+            $table->integer('result')->nullable();
             $table->unsignedInteger('tournament_id')->nullable();
+            $table->string('score')->nullable();
             $table->timestamps();
         });
 
         Schema::table('matches', function (Blueprint $table) {
             $table->foreign('team1_id')->references('id')->on('teams')->onDelete('cascade');
             $table->foreign('team2_id')->references('id')->on('teams')->onDelete('cascade');
-            $table->foreign('winner_id')->references('id')->on('teams')->onDelete('cascade');
             $table->foreign('tournament_id')->references('id')->on('tournaments');
         });
     }

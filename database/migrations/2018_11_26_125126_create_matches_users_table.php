@@ -16,7 +16,7 @@ class CreateMatchesUsersTable extends Migration
         Schema::create('matches_users', function (Blueprint $table) {
             $table->unsignedInteger('match_id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('winner_team_id');
+            $table->integer('bet');
         });
 
         Schema::table('matches_users', function (Blueprint $table) {
