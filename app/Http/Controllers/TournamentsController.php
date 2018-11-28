@@ -2,23 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\TournamentRequest;
+use App\Models\Game;
+use App\Models\Tournament;
 
 class TournamentsController extends Controller
 {
+    public function get(Tournament $tournament) {
+        return $tournament;
+    }
+
     public function getAll() {
-
+        return Tournament::all();
     }
 
-    public function get() {
+    public function create(TournamentRequest $request, Game $game) {
+        $request->persist($game->id);
 
+        return $this->successResponse();
     }
 
-    public function create() {
+    public function update(TournamentRequest $request, $tournamentId) {
+        $request->update($tournamentId);
 
-    }
-
-    public function update() {
-
+        return $this->successResponse();
     }
 }

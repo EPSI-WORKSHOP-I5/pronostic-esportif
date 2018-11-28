@@ -19,26 +19,46 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('games')->group(function () {
     Route::get('/', 'GamesController@getAll');
-    Route::get('/{game}', 'GamesController@get');
     Route::post('/', 'GamesController@create');
     Route::put('/{game}', 'GamesController@update');
 
-    Route::prefix('tournaments')->group(function () {
-        Route::get('/', 'TournamentsController@getAll');
-        Route::get('/{tournament}', 'TournamentsController@get');
-        Route::post('/', 'TournamentsController@create');
-        Route::put('/{tournament}', 'TournamentsController@update');
+    Route::prefix('/{game}')->group(function () {
+        Route::get('/', 'GamesController@getAll');
 
-        Route::prefix('matches')->group(function () {
-            Route::get('/', 'MatchesController@getAll');
-            Route::get('/{match}', 'MatchesController@get');
-            Route::post('/', 'MatchesController@create');
-            Route::put('/{match}', 'MatchesController@update');
+        Route::prefix('tournaments')->group(function () {
+            Route::get('/', 'TournamentsController@getAll');
+            Route::post('/', 'TournamentsController@create');
+        });
+
+        Route::prefix('teams')->group(function () {
+            Route::get('/', 'TeamsController@getAll');
+            Route::post('/', 'TeamsController@create');
         });
     });
+});
 
-    Route::prefix('matches')->group(function () {
-        Route::get('/', 'MatchesController@getAll');
-        Route::get('/{match}', 'MatchesController@get');
+Route::prefix('tournaments')->group(function () {
+
+    Route::prefix('/{tournament}')->group(function () {
+        Route::get('/', 'TournamentsController@get');
+
+        Route::prefix('matches')->group(function () {
+            Route::get('/', 'MatchesController@getByTournament');
+            Route::post('/', 'MatchesController@create');
+        });
+
+        Route::get('teams', 'TeamsController@getByTournament');
     });
+
+    Route::put('/{tournament}', 'TournamentsController@update');
+});
+
+Route::prefix('teams')->group(function () {
+    Route::get('/{team}', 'TeamsController@get');
+    Route::put('/{team}', 'TeamsController@update');
+});
+
+Route::prefix('matches')->group(function () {
+    Route::get('/{match}', 'MatchesController@get');
+    Route::put('/{match}', 'MatchesController@update');
 });
