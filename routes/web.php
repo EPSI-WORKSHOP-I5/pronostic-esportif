@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -66,3 +62,5 @@ Route::prefix('/spa')->group(function () {
         Route::put('/{match}', 'MatchesController@update');
     });
 });
+
+Route::get('/{any}', 'SpaController@index')->where('any', '.*');
