@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Match;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,13 +27,13 @@ class BetRequest extends FormRequest
     {
         return [
             'match_id' => 'required|integer',
-            'bet' => 'required|integer'
+            'team_id' => 'required|integer'
         ];
     }
 
     public function placeBet() {
         $user = Auth::user();
         $match = Match::find($this->match_id);
-        $user->pronostics()->attach($match, ['team_id' => $this->bet]);
+        $user->pronostics()->attach($match, ['team_id' => $this->team_id]);
     }
 }
