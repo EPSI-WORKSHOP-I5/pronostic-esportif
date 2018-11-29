@@ -1,7 +1,7 @@
 <template>
     <div class="row p-3 m-3 rounded d-flex align-items-center h-100 border text-white bg-dark" style="color: cornflowerblue;">
         <div class="col-md-2 text-center">
-            {{match.date}} <br> {{match.tournament}}
+            {{match.datetime}} <br> {{match.tournament}}
         </div>
         <div class=" col-md-4 text-center" @click="postPari(match.id, 1)">
                 {{match.team1.name}}
@@ -22,7 +22,7 @@
 
         methods: {
             postPari(matchId, bet){
-                axios.post('spa/user/pronostics', {
+                axios.put('spa/user/pronostics', {
                     match_id: matchId,
                     bet: bet
                 })
