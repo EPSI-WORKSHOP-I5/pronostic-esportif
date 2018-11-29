@@ -1,12 +1,12 @@
 import Leaderboard from '../Leaderboard';
-import Page from '../Page';
+import Home from '../Home';
 import MatchesList from '../MatchesList';
 import PronosticsList from '../PronosticsList';
 
 
 export default {
     Leaderboard,
-    Page,
+    Home,
     MatchesList,
     PronosticsList
 }

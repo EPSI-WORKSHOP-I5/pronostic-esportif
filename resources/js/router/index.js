@@ -10,9 +10,9 @@ export default new Router({
     mode: 'history',
     routes: [
         {
-            path: '/page',
-            name: 'page',
-            component: pages.Page
+            path: '/',
+            name: 'home',
+            component: pages.Home
         },
         {
             path: '/leaderboard',

@@ -1,14 +1,14 @@
 <template>
     <div class="container">
-        <div class="row card">
-            <p>Welcome to Page.vue</p>
-        </div>
+        <b-card class="text-center">
+            Bienvenue sur le site.
+        </b-card>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Page",
+        name: "Home",
 
         mounted() {
             axios.get('/spa/games')
