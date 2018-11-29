@@ -8,7 +8,11 @@
         </div>
         <div class="col-md-2 text-center">
             {{pronostic.tournament.game_name}} <br>
-            {{pronostic.tournament.name}}
+            {{pronostic.tournament.name}} <br>
+            Vainqueur :
+            <span v-if="pronostic.result != null && pronostic.result == 1">{{pronostic.team1.name}}</span>
+            <span v-else-if="pronostic.result != null && pronostic.result == 2">{{pronostic.team2.name}}</span>
+            <span v-else-if="pronostic.result != null && pronostic.result == 0">Nul</span>
         </div>
         <div class=" col-md-4 text-center" v-bind:class="{'bg-white text-body rounded' : pronostic.bet == 2}" @click="postPari(pronostic.id, 2)">
             {{pronostic.team2.name}}
@@ -27,6 +31,9 @@
                     match_id: matchId,
                     bet: bet
                 })
+                    .then((response) => {
+                        this.pronostic.bet = bet;
+                    })
                     .catch(function (error) {
                         console.log(error);
                     });
