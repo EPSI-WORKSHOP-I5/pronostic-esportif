@@ -64,6 +64,7 @@ Route::prefix('/spa')->group(function () {
 
     Route::get('/user/pronostics', 'MatchesController@getByUser');
     Route::post('/user/pronostics', 'MatchesController@placeBet');
+    Route::delete('/user/pronostics/{match}', 'MatchesController@removeBet');
 });
 
 Route::get('/{any}', 'SpaController@index')->where('any', '^(?!spa).*');

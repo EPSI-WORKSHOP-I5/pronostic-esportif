@@ -40,6 +40,10 @@ class MatchesController extends Controller
         $request->placeBet();
     }
 
+    public function removeBet(BetRequest $request, Match $match) {
+        $request->removeBet($match->id);
+    }
+
     public function create(MatchRequest $request, Tournament $tournament) {
         $request->persist($tournament->id);
 

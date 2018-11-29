@@ -38,4 +38,9 @@ class BetRequest extends FormRequest
             $user->pronostics()->attach($match, ['team_id' => $this->team_id]);
         }
     }
+
+    public function removeBet($matchId) {
+        $user = Auth::user();
+        $user->pronostics()->detach($matchId);
+    }
 }
