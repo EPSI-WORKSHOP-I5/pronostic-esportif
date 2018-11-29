@@ -14,6 +14,7 @@ export default new Router({
             name: 'page',
             component: pages.Page
         },
+
         {
             path: '/list-matchs',
             name: 'list-matchs',
