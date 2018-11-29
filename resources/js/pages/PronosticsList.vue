@@ -1,15 +1,15 @@
 <template>
     <div class="container">
-        <pronostic v-for="pronostic in pronos" v-bind:pronostic="pronostic" v-bind:key="pronostic.id"></pronostic>
+        <match v-for="match in pronos" v-bind:match="match" v-bind:key="match.id"></match>
     </div>
 </template>
 
 <script>
-    import Pronostic from "../components/Pronostic";
+    import Match from "../components/Match";
     export default {
         name: "PronosticsList",
         components: {
-            Pronostic
+            Match
         },
 
         mounted(){
