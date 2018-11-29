@@ -63,4 +63,4 @@ Route::prefix('/spa')->group(function () {
     });
 });
 
-Route::get('/{any}', 'SpaController@index')->where('any', '.*');
+Route::get('/{any}', 'SpaController@index')->where('any', '^(?!spa).*');
