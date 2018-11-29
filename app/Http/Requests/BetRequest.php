@@ -34,6 +34,8 @@ class BetRequest extends FormRequest
     public function placeBet() {
         $user = Auth::user();
         $match = Match::find($this->match_id);
-        $user->pronostics()->attach($match, ['team_id' => $this->team_id]);
+        if (!$user->pronostics->contains($match->id)) {
+            $user->pronostics()->attach($match, ['team_id' => $this->team_id]);
+        }
     }
 }
