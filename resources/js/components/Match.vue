@@ -30,8 +30,8 @@
                     match_id: matchId,
                     bet: bet
                 })
-                    .then(function (error) {
-                        console.log(error);
+                    .then((response) => {
+                        this.match.bet = bet;
                     })
                     .catch(function (error) {
                         console.log(error);
