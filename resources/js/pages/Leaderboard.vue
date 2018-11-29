@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <h1 class="text-center w-100">Classement</h1>
         <div class="row card">
             <b-table striped hover :items="leaderboard"></b-table>
         </div>

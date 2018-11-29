@@ -1,7 +1,8 @@
 <template>
-    <div class="container">
+    <b-container>
+        <h1 class="text-center w-100">Mes paris</h1>
         <match v-for="match in pronos" v-bind:match="match" v-bind:key="match.id"></match>
-    </div>
+    </b-container>
 </template>
 
 <script>
