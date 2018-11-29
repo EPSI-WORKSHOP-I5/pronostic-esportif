@@ -26,8 +26,8 @@ class BetRequest extends FormRequest
     public function rules()
     {
         return [
-            'match_id' => 'required|integer',
-            'team_id' => 'required|integer'
+            'match_id' => 'required',
+            'bet' => 'required'
         ];
     }
 
@@ -35,7 +35,7 @@ class BetRequest extends FormRequest
         $user = Auth::user();
         $match = Match::find($this->match_id);
         if (!$user->pronostics->contains($match->id)) {
-            $user->pronostics()->attach($match, ['team_id' => $this->team_id]);
+            $user->pronostics()->attach($match, ['bet' => $this->bet]);
         }
     }
 

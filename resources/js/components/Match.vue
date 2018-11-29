@@ -3,13 +3,13 @@
         <div class="col-md-2 text-center">
             {{match.date}} <br> {{match.tournament}}
         </div>
-        <div class=" col-md-4 text-center" @click="postPari(match.id, match.team1_id)">
+        <div class=" col-md-4 text-center" @click="postPari(match.id, 1)">
                 {{match.team1.name}}
         </div>
         <div class="col-md-2 text-center">
             {{match.game}}
         </div>
-        <div class=" col-md-4 text-center" @click="postPari(match.id, match.team2_id)">
+        <div class=" col-md-4 text-center" @click="postPari(match.id, 2)">
             {{match.team2.name}}
         </div>
     </div>
@@ -21,10 +21,10 @@
         props: ['match'],
 
         methods: {
-            postPari(matchId, teamId){
+            postPari(matchId, bet){
                 axios.post('spa/user/pronostics', {
                     match_id: matchId,
-                    team_id: teamId
+                    bet: bet
                 })
                     .catch(function (error) {
                         console.log(error);

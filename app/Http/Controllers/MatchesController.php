@@ -35,7 +35,7 @@ class MatchesController extends Controller
         $games = Game::whereIn('id', $gameIds)->get()->pluck('name', 'id');
 
         $pronostics = $pronostics->map(function($p) use ($games) {
-            $p->team_id = $p->pivot->team_id;
+            $p->bet = $p->pivot->bet;
             $p->tournament->game_name = $games[$p->tournament->game_id];
             unset($p->pivot);
             return $p;

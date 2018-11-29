@@ -30,6 +30,6 @@ class User extends Authenticatable
 
     public function pronostics() {
         return $this->belongsToMany('App\Models\Match', 'matches_users')
-            ->withPivot('team_id');
+            ->withPivot('bet');
     }
 }
