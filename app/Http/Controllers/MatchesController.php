@@ -29,7 +29,7 @@ class MatchesController extends Controller
     public function getByUser() {
         $user = Auth::user();
         $pronostics = $user->pronostics->map(function($p) {
-            $p->bet = $p->pivot->bet;
+            $p->team_id = $p->pivot->team_id;
             unset($p->pivot);
             return $p;
         });
