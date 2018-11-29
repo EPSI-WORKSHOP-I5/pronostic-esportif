@@ -3,8 +3,14 @@
         <div class="row">
             <h1 class="text-center w-100"> Les Matchs </h1>
             <div class="text-center w-100">
-                <label class="radio-inline"><input v-model="gamechecked" @change="loadMatch" type="radio" name="optradio" value="1" checked> CSGO </label>
-                <label class="radio-inline"><input v-model="gamechecked" @change="loadMatch" type="radio" name="optradio" value="2"> Lol </label>
+                <b-form-group label="Sélectionnez un jeu :">
+                    <b-form-radio-group id="btnradios1"
+                                        buttons
+                                        v-model="gamechecked"
+                                        :options="options"
+                                        name="radiosBtnDefault"
+                                        @input="loadMatch"/>
+                </b-form-group>
 
             </div>
         </div>
@@ -20,24 +26,14 @@
             Match
         },
 
-        mounted(){
-            /*let _this = this
-
-            axios.get('/spa/tournaments/1/matches')
-                .then(function (response) {
-                    // handle success
-                    _this.setMatches(response.data);
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })*/
-        },
-
         data(){
             return{
                 matchs: [],
-                gamechecked: 0
+                gamechecked: null,
+                options: [
+                    { text: 'Counter Strike: Global Offensive', value: '1'},
+                    { text: 'League of Legend', value: '2'}
+                ]
             };
         },
 
@@ -46,7 +42,8 @@
                 this.matchs = matchs
             },
 
-            loadMatch(){
+            loadMatch() {
+                console.log(this.gamechecked);
                 axios.get('spa/games/'+this.gamechecked+'/matches')
                     .then((response) => {
                         this.setMatches(response.data);
