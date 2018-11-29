@@ -6,6 +6,7 @@ use App\Http\Requests\MatchRequest;
 use App\Models\Game;
 use App\Models\Match;
 use App\Models\Tournament;
+use Illuminate\Support\Facades\Auth;
 
 class MatchesController extends Controller
 {
@@ -22,6 +23,16 @@ class MatchesController extends Controller
             ->where('tournament_id', $tournament->id)
             ->get();
         return $matches;
+    }
+
+    public function getByUser() {
+        $user = Auth::user();
+        $pronostics = $user->pronostics->map(function($p) {
+            $p->bet = $p->pivot->bet;
+            unset($p->pivot);
+            return $p;
+        });
+        return $pronostics;
     }
 
     public function create(MatchRequest $request, Tournament $tournament) {

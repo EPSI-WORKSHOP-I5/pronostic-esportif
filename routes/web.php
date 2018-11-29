@@ -61,6 +61,8 @@ Route::prefix('/spa')->group(function () {
         Route::get('/{match}', 'MatchesController@get');
         Route::put('/{match}', 'MatchesController@update');
     });
+
+    Route::get('/user/pronostics', 'MatchesController@getByUser');
 });
 
 Route::get('/{any}', 'SpaController@index')->where('any', '^(?!spa).*');
