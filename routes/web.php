@@ -19,10 +19,12 @@ Route::prefix('/spa')->group(function () {
     Route::prefix('/games')->group(function () {
         Route::get('/', 'GamesController@getAll');
         Route::post('/', 'GamesController@create');
-        Route::put('/{game}', 'GamesController@update');
 
         Route::prefix('/{game}')->group(function () {
             Route::get('/', 'GamesController@getAll');
+            Route::put('/', 'GamesController@update');
+
+            Route::get('/matches', 'MatchesController@getByGame');
 
             Route::prefix('/tournaments')->group(function () {
                 Route::get('/', 'TournamentsController@getAll');

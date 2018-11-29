@@ -8,6 +8,7 @@ use App\Models\Game;
 use App\Models\Match;
 use App\Models\Tournament;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class MatchesController extends Controller
 {
@@ -15,8 +16,18 @@ class MatchesController extends Controller
         return $match;
     }
 
-    public function getAll() {
-        return Match::all();
+    public function getByGame(Game $game) {
+        $matches = $game->matches()->with('team1', 'team2', 'tournament')->get();
+
+        $user = Auth::user();
+        $pronostics = $user->pronostics()->pluck('bet', 'match_id');
+
+        $matches = $matches->map(function($m) use ($pronostics) {
+            $m->bet = $pronostics[$m->id] ?? null;
+            return $m;
+        });
+
+        return $matches;
     }
 
     public function getByTournament(Tournament $tournament) {
