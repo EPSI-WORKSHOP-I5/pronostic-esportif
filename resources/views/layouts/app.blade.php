@@ -28,7 +28,7 @@
 
             <!-- Branding Image -->
             <b-navbar-brand href="{{ url('/') }}">
-                <img src="{{ asset("img/ultrasecure-logo.png")}}" alt="{{ config('app.name', 'Laravel') }}" class="d-inline-block align-top">
+                <img src="{{ asset("img/logo.png")}}" alt="{{ config('app.name', 'Pronostics e-sportif') }}" height="40" class="d-inline-block align-top">
             </b-navbar-brand>
 
             <b-collapse is-nav id="nav_collapse">
