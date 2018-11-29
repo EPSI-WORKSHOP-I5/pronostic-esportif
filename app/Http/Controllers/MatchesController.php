@@ -28,7 +28,7 @@ class MatchesController extends Controller
 
     public function getByUser() {
         $user = Auth::user();
-        $pronostics = $user->pronostics->map(function($p) {
+        $pronostics = $user->pronostics()->with('team1', 'team2')->get()->map(function($p) {
             $p->team_id = $p->pivot->team_id;
             unset($p->pivot);
             return $p;
