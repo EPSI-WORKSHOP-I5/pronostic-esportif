@@ -68,7 +68,7 @@ Route::prefix('/spa')->group(function () {
         Route::get('/pronostics', 'MatchesController@getByUser');
         Route::put('/pronostics', 'MatchesController@placeBet');
         Route::delete('/pronostics/{match}', 'MatchesController@removeBet');
-        //Route::get('/points', 'UsersController@countPoints');
+        Route::get('/points', 'UsersController@countPoints');
     });
 });
 
