@@ -62,9 +62,12 @@ Route::prefix('/spa')->group(function () {
         Route::put('/{match}', 'MatchesController@update');
     });
 
-    Route::get('/user/pronostics', 'MatchesController@getByUser');
-    Route::post('/user/pronostics', 'MatchesController@placeBet');
-    Route::delete('/user/pronostics/{match}', 'MatchesController@removeBet');
+    Route::prefix('/user')->group(function () {
+        Route::get('/pronostics', 'MatchesController@getByUser');
+        Route::put('/pronostics', 'MatchesController@placeBet');
+        Route::delete('/pronostics/{match}', 'MatchesController@removeBet');
+        //Route::get('/points', 'UsersController@countPoints');
+    });
 });
 
 Route::get('/{any}', 'SpaController@index')->where('any', '^(?!spa).*');
