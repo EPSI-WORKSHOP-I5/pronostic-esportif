@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BetRequest;
 use App\Http\Requests\MatchRequest;
 use App\Models\Game;
 use App\Models\Match;
@@ -33,6 +34,10 @@ class MatchesController extends Controller
             return $p;
         });
         return $pronostics;
+    }
+
+    public function placeBet(BetRequest $request) {
+        $request->placeBet();
     }
 
     public function create(MatchRequest $request, Tournament $tournament) {
