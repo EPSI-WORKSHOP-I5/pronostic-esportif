@@ -11,7 +11,8 @@ class Match extends Model
         'team2_id',
         'result',
         'tournament_id',
-        'score'
+        'score',
+        'datetime'
     ];
 
     public function team1() {
