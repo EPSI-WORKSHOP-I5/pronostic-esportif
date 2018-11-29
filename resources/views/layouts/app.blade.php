@@ -35,8 +35,8 @@
                 <!-- Left Side Of Navbar -->
                 <b-navbar-nav>
                     <b-nav-item :to="{ name: 'home'}">Mes paris</b-nav-item>
-                    <b-nav-item :to="{ name: 'matches'}">Les matches</b-nav-item>
-                    <b-nav-item :to="{ name: 'account'}">Mon compte</b-nav-item>
+                    <b-nav-item :to="{ name: 'list-matchs'}">Les matches</b-nav-item>
+                    <b-nav-item :to="{ name: 'list-pronostics'}">Mon compte</b-nav-item>
                 </b-navbar-nav>
 
                 <!-- Right Side Of Navbar -->
