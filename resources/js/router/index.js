@@ -14,7 +14,11 @@ export default new Router({
             name: 'page',
             component: pages.Page
         },
-
+        {
+            path: '/leaderboard',
+            name: 'leaderboard',
+            component: pages.Leaderboard
+        },
         {
             path: '/list-matchs',
             name: 'list-matchs',

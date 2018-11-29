@@ -70,6 +70,8 @@ Route::prefix('/spa')->group(function () {
         Route::delete('/pronostics/{match}', 'MatchesController@removeBet');
         Route::get('/points', 'UsersController@countPoints');
     });
+
+    Route::get('/leaderboard', 'UsersController@leaderboard');
 });
 
 Route::get('/{any}', 'SpaController@index')->where('any', '^(?!spa).*');

@@ -37,6 +37,7 @@
                     <b-nav-item :to="{ name: 'list-pronostics'}">Mes paris</b-nav-item>
                     <b-nav-item :to="{ name: 'list-matchs'}">Les matches</b-nav-item>
                     <b-nav-item :to="{ name: 'list-pronostics'}">Mon compte</b-nav-item>
+                    <b-nav-item :to="{ name: 'leaderboard'}">Classement</b-nav-item>
                 </b-navbar-nav>
 
                 <!-- Right Side Of Navbar -->
