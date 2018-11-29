@@ -22,4 +22,8 @@ class Match extends Model
     public function team2() {
         return $this->hasOne('App\Models\Team', 'id', 'team2_id');
     }
+
+    public function tournament() {
+        return $this->belongsTo('App\Models\Tournament');
+    }
 }

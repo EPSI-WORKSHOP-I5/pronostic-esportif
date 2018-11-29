@@ -28,11 +28,19 @@ class MatchesController extends Controller
 
     public function getByUser() {
         $user = Auth::user();
-        $pronostics = $user->pronostics()->with('team1', 'team2')->get()->map(function($p) {
+
+        $pronostics = $user->pronostics()->with('team1', 'team2', 'tournament')->get();
+        $gameIds = $pronostics->pluck('tournament')->pluck('game_id');
+
+        $games = Game::whereIn('id', $gameIds)->get()->pluck('name', 'id');
+
+        $pronostics = $pronostics->map(function($p) use ($games) {
             $p->team_id = $p->pivot->team_id;
+            $p->tournament->game_name = $games[$p->tournament->game_id];
             unset($p->pivot);
             return $p;
         });
+
         return $pronostics;
     }
 

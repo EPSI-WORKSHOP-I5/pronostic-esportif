@@ -20,4 +20,8 @@ class Tournament extends Model
     public function matches() {
         return $this->hasMany('App\Models\Match');
     }
+
+    public function game() {
+        return $this->belongsTo('App\Models\Game');
+    }
 }
