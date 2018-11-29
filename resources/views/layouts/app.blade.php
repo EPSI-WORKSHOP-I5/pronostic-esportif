@@ -27,7 +27,7 @@
             <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
             <!-- Branding Image -->
-            <b-navbar-brand href="{{ url('/') }}">
+            <b-navbar-brand :to="{ name: 'home'}">
                 <img src="{{ asset("img/logo.png")}}" alt="{{ config('app.name', 'Pronostics e-sportif') }}" height="40" class="d-inline-block align-top">
             </b-navbar-brand>
 
@@ -35,7 +35,7 @@
                 <!-- Left Side Of Navbar -->
                 <b-navbar-nav>
                     <b-nav-item :to="{ name: 'list-pronostics'}">Mes paris</b-nav-item>
-                    <b-nav-item :to="{ name: 'list-matchs'}">Les matches</b-nav-item>
+                    <b-nav-item :to="{ name: 'list-matchs'}">Les matchs</b-nav-item>
                     <b-nav-item :to="{ name: 'list-pronostics'}">Mon compte</b-nav-item>
                     <b-nav-item :to="{ name: 'leaderboard'}">Classement</b-nav-item>
                 </b-navbar-nav>
